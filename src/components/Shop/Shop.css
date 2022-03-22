@@ -1,0 +1,161 @@
+.mt_1 {
+    margin-top: 10px;
+}
+
+.shop_container {
+    background: #eceff1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 50px 0;
+}
+
+.products_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-gap: 20px;
+    padding: 0px 20px;
+}
+
+.badge {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    padding: 2px;
+    border-radius: 50%;
+    color: #1c2b35;
+    background: #ff9900;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 1px 2px 15px 13px #d5d5d51f;
+    border-radius: 3px;
+}
+
+.thum img {
+    width: 100%;
+}
+
+.card-title {
+    color: #212120;
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+.card-price {
+    margin: 10px 0;
+}
+
+.button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.add_to_cart {
+    padding: 11px 25px;
+    background: #ff9900;
+    color: black;
+    outline: 0;
+    border-radius: 10px;
+    box-shadow: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    border: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.add_to_cart:hover {
+    background: #1c2b35;
+    color: #ffffff;
+}
+
+/* cart  */
+.cart_container {
+    background: #fff;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.name {
+    display: inline-block;
+    color: blue;
+    padding-right: 12px;
+}
+
+.add_minus_qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 27px;
+}
+
+.add,
+.remove {
+    padding: 5px;
+    font-size: 23px;
+    text-align: center;
+    color: #ff9900;
+    cursor: pointer;
+}
+
+.qty {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.cart_item {
+    display: grid;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    grid-template-columns: 30% 25% 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+.price_del_item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeItem {
+    color: #1c2b35;
+    cursor: pointer;
+    transition: all 0.3s
+}
+
+.removeItem:hover {
+    color: #ff9900;
+}
+
+.grand_calculation {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 61px;
+    border-bottom: 1px solid #1c2b35;
+    padding-bottom: 8px;
+}
+
+.grand_calculation.checkout_btn {
+    justify-content: right;
+    margin-top: 5px;
+    border: 0;
+    padding: 0;
+}
+
+.grand_calculation.checkout_btn .add_to_cart {
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.grand_calculation.checkout_btn .add_to_cart:hover {
+    background: #1c2b35;
+    color: #fff;
+}
