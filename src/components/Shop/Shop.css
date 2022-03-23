@@ -84,6 +84,11 @@
     padding: 10px;
 }
 
+.cartItems {
+    position: sticky;
+    top: 29px;
+}
+
 .name {
     display: inline-block;
     color: blue;

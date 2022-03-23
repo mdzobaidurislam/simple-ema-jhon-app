@@ -6,29 +6,33 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 const Order = ({ cartItems, addToCart, removeToCart, removeToCartItem }) => {
-  const price = cartItems.reduce((prv, cur) => prv + cur.price * cur.qty, 0);
-  const tax = price / 10;
-
-  let shippingCost = 2;
-  if (price > 335) {
-    shippingCost = 0;
-  } else if (price > 225) {
-    shippingCost = 4.99;
-  } else if (price > 0) {
-    shippingCost = 12.99;
+  let total = 0;
+  let shippingCost = 0;
+  let quantity = 0;
+  let totalQuantity = 0;
+  for (const product of cartItems) {
+    totalQuantity = totalQuantity + product.quantity;
+    quantity = product.quantity;
+    total += product.price * quantity;
+    shippingCost = shippingCost + product.shipping * quantity;
   }
 
+  const tax = total * 0.01;
+
+  // total Price
+  const totalPrice = total + shippingCost + tax;
+
   const formatNumber = (num) => {
-    const precision = Math.round(num);
+    const precision = num.toFixed(2);
     return Number(precision);
   };
+
   // total price
-  const totalPrice = formatNumber(price + shippingCost + tax);
 
   return (
     <div className="cartItems">
       <p>
-        Cart Items: <span className="badge"> {cartItems.length}</span>{" "}
+        Cart Items: <span className="badge"> {totalQuantity}</span>{" "}
         {cartItems.length === 0 && <strong>Cart Is Empty</strong>}
       </p>
       <div>
@@ -40,14 +44,14 @@ const Order = ({ cartItems, addToCart, removeToCart, removeToCartItem }) => {
               <span className="add" onClick={() => addToCart(item)}>
                 <FontAwesomeIcon icon={faPlusCircle} />
               </span>
-              <span className="qty">{item.qty}</span>
+              <span className="qty">{item.quantity}</span>
               <span className="remove" onClick={() => removeToCart(item)}>
                 <FontAwesomeIcon icon={faMinusCircle} />
               </span>
             </p>
             <p className="price_del_item">
               <span className="item_price">
-                {item.qty} X ${item.price} = ${item.qty * item.price}{" "}
+                {item.quantity} X ${item.price} = ${item.quantity * item.price}{" "}
               </span>
               <span
                 className="removeItem"
@@ -63,7 +67,7 @@ const Order = ({ cartItems, addToCart, removeToCart, removeToCartItem }) => {
         <div className="mt_1">
           <div className="grand_calculation">
             <strong> Total Item Price:</strong>{" "}
-            <span>${formatNumber(price)}</span>
+            <span>${formatNumber(total)}</span>
           </div>
           <div className="grand_calculation">
             <strong> Shipping:</strong> <span>${shippingCost}</span>
