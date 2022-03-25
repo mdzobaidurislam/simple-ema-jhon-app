@@ -33,10 +33,12 @@ const Order = ({ cartItems, addToCart, removeToCart, removeToCartItem }) => {
       </p>
       <div>
         {cartItems.map((item) => (
-          <div key={item.id} className="cart_item">
-            {" "}
-            <span className="name">{item.name.slice(0, 5)}</span>
-            <p className="add_minus_qty">
+          <div key={item.id} className="row align-items-center">
+            <div className="col-lg-2">
+              <img src={item.img} className="img-fluid" alt="" />
+            </div>
+            <div className="col-lg-2 ">{item.name.slice(0, 5)}</div>
+            <div className=" col-lg-3 ">
               <span className="add" onClick={() => addToCart(item)}>
                 <FontAwesomeIcon icon={faPlusCircle} />
               </span>
@@ -44,18 +46,20 @@ const Order = ({ cartItems, addToCart, removeToCart, removeToCartItem }) => {
               <span className="remove" onClick={() => removeToCart(item)}>
                 <FontAwesomeIcon icon={faMinusCircle} />
               </span>
-            </p>
-            <p className="price_del_item">
+            </div>
+            <div className="col-lg-4">
               <span className="item_price">
                 {item.qty} X ${item.price} = ${item.qty * item.price}{" "}
               </span>
+            </div>
+            <div className="col-lg-1">
               <span
                 className="removeItem"
                 onClick={() => removeToCartItem(item)}
               >
                 <FontAwesomeIcon icon={faTrash} />
               </span>
-            </p>
+            </div>
           </div>
         ))}
       </div>

@@ -49,18 +49,29 @@ const Shop = () => {
 
   return (
     <section className="shop_container">
-      <div className="products_container">
-        {products.slice(0, 6).map((product) => (
-          <Product key={product.id} product={product} addToCart={addToCart} />
-        ))}
-      </div>
-      <div className="cart_container">
-        <Order
-          addToCart={addToCart}
-          removeToCart={removeToCart}
-          removeToCartItem={removeToCartItem}
-          cartItems={cartItems}
-        />
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-7">
+            <div className="row">
+              {products.slice(0, 6).map((product) => (
+                <Product
+                  key={product.id}
+                  product={product}
+                  addToCart={addToCart}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="col-lg-5">
+            <Order
+              addToCart={addToCart}
+              removeToCart={removeToCart}
+              removeToCartItem={removeToCartItem}
+              cartItems={cartItems}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
